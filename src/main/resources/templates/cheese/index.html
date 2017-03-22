@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org/">
-<head>
-    <meta charset="UTF-8" />
-    <title th:text="${title}">Title</title>
-</head>
+<head th:replace="fragments :: head"></head>
 <body>
-    <h1 th:text="${title}">Default Title</h1>
 
-    <p th:unless="${cheeses} and ${cheeses.size()}">no cheese :( </p>
+<nav th:replace="fragments :: title"></nav>
+<nav th:replace="fragments :: navigation"></nav>
 
-    <a href = "/cheese/add">Add Cheese</a>
 
-<ul>
-    <li th:each="cheese : ${cheeses}" th:text="${cheese}"></li>
-
-</ul>
-
+<div class="container">
+    <div class="row">
+        <form action="delete" method="POST">
+            <table class="u-full-width">
+                <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:each="cheese : ${cheeses}">
+                    <td>
+                        <input type="checkbox" th:name="delete" th:value="${cheese.key}"/>
+                    </td>
+                    <td th:text="${cheese.key}"></td>
+                    <td th:text="${cheese.value}"></td>
+                </tr>
+                </tbody>
+            </table>
+            <input class="button-danger" id="deleteButton" type="submit" value="delete"/>
+        </form>
+    </div>
+</div>
 
 </body>
 </html>
