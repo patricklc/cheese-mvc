@@ -3,7 +3,9 @@ package org.launchcode.models;
 import java.util.ArrayList;
 
 /**
+<<<<<<< HEAD
  * Created by Patrick on 3/22/2017.
+=======
  */
 public class CheeseData {
 
@@ -13,6 +15,7 @@ public class CheeseData {
     public static ArrayList<Cheese> getAll() {
         return cheeses;
     }
+
     public static void add(Cheese newCheese) {
         cheeses.add(newCheese);
     }
@@ -22,16 +25,17 @@ public class CheeseData {
         cheeses.remove(cheeseToRemove);
     }
 
+
     public static Cheese getById(int id) {
         Cheese theCheese = null;
 
         for (Cheese candidateCheese : cheeses) {
-            if(candidateCheese.getCheeseId() == id) {
+            if (candidateCheese.getCheeseId() == id) {
+
+
                 theCheese = candidateCheese;
             }
         }
-
-
-        return theCheese;
-    }
+            return theCheese;
+        }
 }
